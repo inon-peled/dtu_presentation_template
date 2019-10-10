@@ -21,7 +21,7 @@
     ItalicFont=NeoSansProItalic,
     BoldItalicFont=NeoSansProBoldItalic,
 ]
-% use DTU fonts -- must compile with LuxLaTeX
+% use DTU fonts -- must compile with LuaLaTeX
 \usefonttheme{professionalfonts} % using non standard fonts for beamer
 \usefonttheme{serif} % default family is serif
 
@@ -30,15 +30,17 @@
 \usepackage{bm}
 \usepackage{graphicx}
 \usepackage[
+    giveninits=true,
     backend=biber,
     natbib=true,
     style=numeric,
     % maxbibnames=9,
     % maxcitenames=1,
 ]{biblatex}
+\DeclareNameAlias{author}{family-given}
 \addbibresource{references.bib}
 
-% If warning about "Patching footnotes failed", you can disable it by uncommenting the following: 
+% You can disable a compilation warning about "Patching footnotes failed" by uncommenting the following: 
 % \usepackage{silence}
 % \WarningFilter{biblatex}{Patching footnotes failed}
 
