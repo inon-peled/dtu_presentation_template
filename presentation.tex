@@ -1,0 +1,109 @@
+% !!!! THIS DOCUMENT SHOULD BE COMPILED WITH LuaLaTex !!!!
+
+\documentclass[10pt]{beamer} % 4:3 standard format
+% \documentclass[aspectratio=169]{beamer} % uncomment for 16:9 wide format
+
+\usetheme[pageofpages=of,% String used between the current page and the total page count.
+          bullet=circle,% Use circles instead of squares for bullets.
+          titleline=true,% Show a line below the frame title.
+          alternativetitlepage=true,% Use the fancy title page.
+          titlepagelogo=logo_dtu_mlsm,% Logo for the first page.
+          watermark=logo_empty,% Watermark used in every page.
+          watermarkheight=55px,% Height of the watermark.
+          watermarkheightmult=4,% The watermark image is 4 times bigger than watermarkheight.
+          ]{DTU}
+
+\usepackage{fontspec}
+\setmainfont{NeoSansPro}[
+    Extension=.ttf,
+    BoldFont=NeoSansProBold,
+    ItalicFont=NeoSansProItalic,
+    BoldItalicFont=NeoSansProBoldItalic,
+]
+% \setmainfont{[NeoSansPro.ttf]}
+% use DTU fonts -- must compile with LuxLaTeX
+\usefonttheme{professionalfonts} % using non standard fonts for beamer
+\usefonttheme{serif} % default family is serif
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage[
+    natbib=true,
+    style=numeric,
+    maxbibnames=9,
+    maxcitenames=1,
+    backend=biber
+]{biblatex}
+\addbibresource{references.bib}
+\usepackage{silence}
+\WarningFilter{biblatex}{Patching footnotes failed}
+
+% New commands
+\newcommand{\dtunote}{\texorpdfstring{$^\dagger$}{DTU}}
+\newcommand{\ntunote}{\texorpdfstring{$^\ddagger$}{NTU}}
+\newcommand{\citeall}[1]{
+    \citeauthor{#1} 
+    (\citeyear{#1}), 
+    \citetitle{#1}
+}
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\exval}[1]{\mathbb{E} \left( #1 \right)}
+\newcommand{\prob}[1]{\Pr\left(#1\right)}
+\newcommand{\acite}[1]{\autocite{#1}}
+\newcommand{\br}{\\\bigskip}
+\renewcommand{\vec}[1]{\bm{#1}}
+\newcommand{\mat}[1]{\bm{#1}}
+\newcommand{\transframe}[1]{
+    \begin{frame}[c]{}
+        \begin{center}
+        \hrule \vskip 15pt
+        \huge #1
+        \vskip 15pt \hrule
+        \end{center}
+    \end{frame}
+}
+\newcommand{\secframe}[1]{
+    \transframe{#1}
+    \section{#1}
+}
+
+% Info for title page
+\author{
+    First Author,
+    \textbf{Presenting Author},
+    Third Author, ...}
+\title{
+    %\LARGE 
+    Presentation Title}
+\institute{Technical University of Denmark}
+\date{\\[\bigskipamount]Conference and Date}
+
+% start slides
+\begin{document}
+
+% title slide
+\begin{frame}[t,plain]
+\titlepage
+\end{frame}
+
+\transframe{Introduction Introduction \emph{Introduction}}
+
+\begin{frame}[t]{Frame Title}
+Hello \cite{dummycite}.
+
+\begin{align}
+		y = \vec{\beta}^T \vec{x} + \varepsilon
+\end{align}
+\end{frame}
+
+\begin{frame}[t]{References}  % [allowframebreaks]
+    \setbeamertemplate{bibliography item}[text]
+    \renewcommand*{\bibfont}{\small}
+    \printbibliography
+\end{frame}
+
+\end{document}
+
