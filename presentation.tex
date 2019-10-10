@@ -1,4 +1,4 @@
-% !!!! THIS DOCUMENT SHOULD BE COMPILED WITH LuaLaTex !!!!
+% !!!! THIS DOCUMENT SHOULD BE COMPILED WITH LuaLaTeX !!!!
 
 \documentclass[10pt]{beamer} % 4:3 standard format
 % \documentclass[aspectratio=169]{beamer} % uncomment for 16:9 wide format
@@ -20,7 +20,6 @@
     ItalicFont=NeoSansProItalic,
     BoldItalicFont=NeoSansProBoldItalic,
 ]
-% \setmainfont{[NeoSansPro.ttf]}
 % use DTU fonts -- must compile with LuxLaTeX
 \usefonttheme{professionalfonts} % using non standard fonts for beamer
 \usefonttheme{serif} % default family is serif
@@ -31,31 +30,19 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 \usepackage[
+    backend=biber,
     natbib=true,
     style=numeric,
-    maxbibnames=9,
-    maxcitenames=1,
-    backend=biber
+    % maxbibnames=9,
+    % maxcitenames=1,
 ]{biblatex}
 \addbibresource{references.bib}
-\usepackage{silence}
-\WarningFilter{biblatex}{Patching footnotes failed}
 
-% New commands
-\newcommand{\dtunote}{\texorpdfstring{$^\dagger$}{DTU}}
-\newcommand{\ntunote}{\texorpdfstring{$^\ddagger$}{NTU}}
-\newcommand{\citeall}[1]{
-    \citeauthor{#1} 
-    (\citeyear{#1}), 
-    \citetitle{#1}
-}
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-\newcommand{\exval}[1]{\mathbb{E} \left( #1 \right)}
-\newcommand{\prob}[1]{\Pr\left(#1\right)}
-\newcommand{\acite}[1]{\autocite{#1}}
-\newcommand{\br}{\\\bigskip}
-\renewcommand{\vec}[1]{\bm{#1}}
-\newcommand{\mat}[1]{\bm{#1}}
+% If warning about "Patching footnotes failed", you can disable it by uncommenting the following: 
+% \usepackage{silence}
+% \WarningFilter{biblatex}{Patching footnotes failed}
+
+% For transitioning to new Section:
 \newcommand{\transframe}[1]{
     \begin{frame}[c]{}
         \begin{center}
@@ -69,6 +56,18 @@
     \transframe{#1}
     \section{#1}
 }
+
+% For equations:
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\renewcommand{\vec}[1]{\bm{#1}}
+
+% For citations:
+\newcommand{\citeall}[1]{
+    \citeauthor{#1} 
+    (\citeyear{#1}), 
+    \citetitle{#1}
+}
+\newcommand{\acite}[1]{\autocite{#1}}
 
 % Info for title page
 \author{
@@ -89,7 +88,7 @@
 \titlepage
 \end{frame}
 
-\transframe{Introduction Introduction \emph{Introduction}}
+\secframe{Introduction Introduction \emph{Introduction}}
 
 \begin{frame}[t]{Frame Title}
 Hello \cite{dummycite}.
@@ -106,4 +105,3 @@ Hello \cite{dummycite}.
 \end{frame}
 
 \end{document}
-
