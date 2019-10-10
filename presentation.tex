@@ -60,6 +60,7 @@
 % For equations:
 \newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
 \renewcommand{\vec}[1]{\bm{#1}}
+\newcommand{\vectrans}[1]{\vec{#1}^{\mbox{\scriptsize T}}}
 
 % For citations:
 \newcommand{\citeall}[1]{
@@ -94,7 +95,7 @@
 Example equation \cite{dummycite}:
 
 \begin{align}
-    y = \vec{\beta}^T \vec{x} + \varepsilon
+    y = \vectrans{\beta} \vec{x} + \varepsilon
 \end{align}
 \end{frame}
 
